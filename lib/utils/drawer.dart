@@ -23,9 +23,9 @@ class DrawerUtils {
       'route': '/help',
     },
     {
-      'title': 'Introduction',
+      'title': 'About',
       'icon': Icons.info_outline,
-      'route': '/intro',
+      'route': '/about',
     },
     {
       'title': 'Share App',

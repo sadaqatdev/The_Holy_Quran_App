@@ -73,20 +73,14 @@ class Guidelines extends StatelessWidget {
             guideNo: 5,
             title: "Reporting a Mistake",
             guideDescription:
-                "If you see any mistake in context of this Holy Book please report at the following link: \n\nhttps://api.alquran.cloud",
+                "If you see any mistake in context of this Holy Book please report at the following email: \n\nsadaqathunzai@gmail.com \n or 03495304657",
           ),
-          GuideContainer(
-            guideNo: 6,
-            title: "Code Available",
-            guideDescription:
-                "Code is available at the following link: \n\nhttps://github.com/mhmzdev/The_Holy_Quran_App \n\nThe code is for learning purposes, it has proper LICENSE but you are not allowed to publish this app.",
-          ),
-          GuideContainer(
-            guideNo: 7,
-            title: "Developer's Info",
-            guideDescription:
-                "Name: Muhammad Hamza \nEmail: hamza.6.shakeel@gmail.com \nGitHub: @mhmzdev \nWebsite: mhmz.dev",
-          )
+          // GuideContainer(
+          //   guideNo: 6,
+          //   title: "Code Available",
+          //   guideDescription:
+          //       "Code is available at the following link: \n\nhttps://github.com/mhmzdev/The_Holy_Quran_App \n\nThe code is for learning purposes, it has proper LICENSE but you are not allowed to publish this app.",
+          // ),
         ],
       ),
     );
@@ -113,15 +107,17 @@ class GuideContainer extends StatelessWidget {
           Text(
             "\n$guideNo. $title",
             style: Theme.of(context).textTheme.bodyText1,
+            textAlign: TextAlign.center,
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.03,
+          const SizedBox(
+            height: 12,
           ),
           Text(
             guideDescription,
-            textAlign: TextAlign.justify,
-            style:
-                TextStyle(fontSize: MediaQuery.of(context).size.height * 0.020),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: MediaQuery.of(context).size.height * 0.020,
+                height: 2),
           ),
         ],
       ),

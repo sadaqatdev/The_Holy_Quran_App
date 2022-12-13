@@ -5,11 +5,12 @@ class _MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  App.init(context);
+    App.init(context);
     final appProvider = Provider.of<AppProvider>(context);
 
     return Container(
       width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
       color: appProvider.isDark ? Colors.grey[800] : Colors.white,
       child: Stack(
         fit: StackFit.expand,
@@ -21,16 +22,35 @@ class _MainScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                // Space.y1!,
+                // MaterialButton(
+                //   color: Colors.red,
+                //   height: 50,
+                //   onPressed: () {
+                //     initData();
+                //   },
+                //   child: Text("Upload"),
+                // ),
+                // Space.y1!,
+                // MaterialButton(
+                //   color: Colors.red,
+                //   height: 50,
+                //   onPressed: () {
+                //     NewDbOpen().getFirestoreData();
+                //   },
+                //   child: Text("get"),
+                // ),
                 Space.y1!,
                 _CustomButton(
                   title: 'Surah Index',
                   onPressed: () => Navigator.pushNamed(context, '/surahIndex'),
                 ),
                 Space.y1!,
-                _CustomButton(
-                  title: 'Juzz Index',
-                  onPressed: () => Navigator.pushNamed(context, '/juzIndex'),
-                ),
+                // Space.y1!,
+                // _CustomButton(
+                //   title: 'Juzz Index',
+                //   onPressed: () => Navigator.pushNamed(context, '/juzIndex'),
+                // ),
                 Space.y1!,
                 _CustomButton(
                   title: 'Bookmarks',

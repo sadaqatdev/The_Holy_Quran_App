@@ -1,7 +1,7 @@
 part of '../surah_index_screen.dart';
 
 class _SurahAppBar extends StatelessWidget {
-  final Chapter? data;
+  final String? data;
   const _SurahAppBar({
     Key? key,
     this.data,
@@ -12,7 +12,7 @@ class _SurahAppBar extends StatelessWidget {
     return FlexibleSpaceBar(
       centerTitle: true,
       title: Text(
-        data!.englishName!,
+        data ?? '',
         style: AppText.b2b,
       ),
       background: Stack(
@@ -31,9 +31,9 @@ class _SurahAppBar extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(data!.englishNameTranslation!),
+                // Text(data!.englishNameTranslation!),
                 Text(
-                  data!.name!,
+                  '',
                   style: AppText.h1b!.copyWith(
                     fontFamily: 'Noor',
                   ),

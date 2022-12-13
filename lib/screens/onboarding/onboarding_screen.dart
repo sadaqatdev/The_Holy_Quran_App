@@ -22,7 +22,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     const _OnBoardingPage(
       image: StaticAssets.gradLogo,
       text:
-          "The Holy Qur'an\n\n\"Indeed, It is We who sent down the Qur'an and indeed, We will be its Guardian\"\n",
+          "Shina Quran\n\n\"Indeed, It is We who sent down the Qur'an and indeed, We will be its Guardian\"\n",
     ),
     const _OnBoardingPage(
       image: StaticAssets.ui,

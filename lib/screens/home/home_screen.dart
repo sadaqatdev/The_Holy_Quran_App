@@ -2,8 +2,11 @@ import 'dart:io';
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:al_quran/configs/app.dart';
+import 'package:al_quran/main.dart';
+import 'package:al_quran/new_dbopend.dart';
 import 'package:al_quran/providers/app_provider.dart';
 import 'package:al_quran/utils/drawer.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:al_quran/configs/configs.dart';
@@ -119,6 +122,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     App.init(context);
+
     final appProvider = Provider.of<AppProvider>(context);
     double width = MediaQuery.of(context).size.width;
 

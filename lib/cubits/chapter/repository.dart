@@ -1,7 +1,7 @@
-part of 'cubit.dart';
+// part of 'cubit.dart';
 
-class ChapterRepository {
-  Future<List<Chapter?>?> chapterApi() => ChapterDataProvider.chapterApi();
+// class ChapterRepository {
+//   Future<List<SuraName?>?> chapterApi() => ChapterDataProvider.chapterApi();
 
-  Future<List<Chapter?>?> chapterHive() => ChapterDataProvider.chapterHive();
-}
+//   Future<List<SuraName?>?> chapterHive() => ChapterDataProvider.chapterHive();
+// }

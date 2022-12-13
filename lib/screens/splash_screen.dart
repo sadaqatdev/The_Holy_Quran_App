@@ -2,6 +2,8 @@ import 'package:al_quran/animations/bottom_animation.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/cubits/bookmarks/cubit.dart';
 import 'package:al_quran/cubits/juz/cubit.dart';
+import 'package:al_quran/cubits/sura/cubit.dart';
+import 'package:al_quran/screens/page/quran_repo.dart';
 import 'package:al_quran/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,19 +28,21 @@ class _SplashScreenState extends State<SplashScreen> {
       appProvider.initTheme();
     });
 
-    bool isNew = appProvider.init();
+    bool isNew = await appProvider.init();
 
-    final bookmarkCubit = BookmarkCubit.cubit(context);
-    final chapterCubit = ChapterCubit.cubit(context);
-    final juzCubit = JuzCubit.cubit(context);
+    // final bookmarkCubit = BookmarkCubit.cubit(context);
 
-    await chapterCubit.fetch();
+    // final suraCubit = SurasCubit.cubit(context);
 
-    await bookmarkCubit.fetch();
+    // final juzCubit = JuzCubit.cubit(context);
 
-    for (int i = 1; i <= 30; i++) {
-      await juzCubit.fetch(i);
-    }
+    // await suraCubit.fetchSuras();
+
+    // await bookmarkCubit.fetch();
+
+    // await juzCubit.fetchJuz();
+
+    // await QuranRepo().openDb();
 
     Future.delayed(const Duration(seconds: 1), () {
       if (mounted) {
@@ -67,35 +71,40 @@ class _SplashScreenState extends State<SplashScreen> {
 
     return Scaffold(
       backgroundColor: appProvider.isDark ? Colors.grey[850] : Colors.white,
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            WidgetAnimator(
-              child: Image.asset(
-                appProvider.isDark ? StaticAssets.gradLogo : StaticAssets.logo,
-                height: AppDimensions.normalize(100),
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              WidgetAnimator(
+                child: Image.asset(
+                  appProvider.isDark
+                      ? StaticAssets.gradLogo
+                      : StaticAssets.logo,
+                  height: AppDimensions.normalize(100),
+                ),
               ),
-            ),
-            Space.y1!,
-            Shimmer.fromColors(
-              enabled: true,
-              baseColor: appProvider.isDark ? Colors.white : Colors.black,
-              highlightColor: appProvider.isDark ? Colors.grey : Colors.white,
-              child: BlocBuilder<ChapterCubit, ChapterState>(
-                builder: (context, state) {
-                  if (state is ChapterFetchLoading) {
-                    return const Text('Getting all Surahs...');
-                  } else if (bookmarkCubit.state is BookmarkFetchLoading) {
-                    return const Text('Setting up Bookmarks...');
-                  } else if (juzCubit.state is JuzFetchLoading) {
-                    return const Text('Setting up offline mode...');
-                  }
-                  return const Text('Initializing data...');
-                },
+              Space.y1!,
+              Shimmer.fromColors(
+                enabled: true,
+                baseColor: appProvider.isDark ? Colors.white : Colors.black,
+                highlightColor: appProvider.isDark ? Colors.grey : Colors.white,
+                child: BlocBuilder<ChapterCubit, ChapterState>(
+                  builder: (context, state) {
+                    if (state is ChapterFetchLoading) {
+                      return const Text('Getting all Surahs...');
+                    } else if (bookmarkCubit.state is BookmarkFetchLoading) {
+                      return const Text('Setting up Bookmarks...');
+                    } else if (juzCubit.state is JuzFetchLoading) {
+                      return const Text('Setting up offline mode...');
+                    }
+                    return const Text('Downloading Quran Data please wait...');
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

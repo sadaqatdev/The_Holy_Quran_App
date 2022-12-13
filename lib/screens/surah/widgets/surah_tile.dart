@@ -1,7 +1,7 @@
 part of '../surah_index_screen.dart';
 
 class SurahTile extends StatelessWidget {
-  final Chapter? chapter;
+  final SuraName? chapter;
 
   const SurahTile({
     Key? key,
@@ -13,16 +13,16 @@ class SurahTile extends StatelessWidget {
     return WidgetAnimator(
       child: ListTile(
         minLeadingWidth: 15.0,
-        leading: Text(chapter!.number!.toString()),
+        leading: const SizedBox(),
         title: Text(
-          chapter!.englishName!,
+          chapter?.surah_no.toString() ?? "",
           style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
-        subtitle: Text(chapter!.englishNameTranslation!),
+        // subtitle: Text(chapter!.englishNameTranslation!),
         trailing: Text(
-          chapter!.name!,
+          chapter!.name_arabic,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -32,7 +32,8 @@ class SurahTile extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (_) => PageScreen(
-                chapter: chapter,
+                name: chapter?.name_arabic ?? '',
+                number: chapter!.surah_no.toInt(),
               ),
             ),
           );

@@ -19,7 +19,7 @@ class AppName extends StatelessWidget {
             ),
           ),
           Text(
-            "Holy\nQur'an",
+            "Shina\nQur'an",
             style: AppText.h1!.copyWith(
               fontWeight: FontWeight.w600,
               color: Colors.grey,

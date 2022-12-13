@@ -1,50 +1,51 @@
-part of 'cubit.dart';
+// part of 'cubit.dart';
 
-class ChapterDataProvider {
-  static final cache = Hive.box('data');
+// class ChapterDataProvider {
+//   static final cache = Hive.box('data');
 
-  static Dio ins = Dio();
+//   static Dio ins = Dio();
 
-  static Future<List<Chapter?>?> chapterApi() async {
-    try {
-      final resp = await ins.get(
-        'http://api.alquran.cloud/v1/quran/quran-uthmani',
-      );
-      final Map<String, dynamic> raw = resp.data['data'];
+//   static Future<List<SuraName?>?> chapterApi() async {
+//     try {
+//       final resp = await ins.get(
+//         'http://api.alquran.cloud/v1/quran/quran-uthmani',
+//       );
+//       final Map<String, dynamic> raw = resp.data['data'];
 
-      final List data = raw['surahs'];
-      final List<Chapter> chapters = List.generate(
-        data.length,
-        (index) => Chapter.fromMap(data[index]),
-      );
-      await cache.put(
-        'chapters',
-        chapters,
-      );
+//       final List data = raw['surahs'];
 
-      return chapters;
-    } on DioError catch (e) {
-      if (e.type == DioErrorType.other) {
-        throw Exception('Problem with internet connection');
-      } else {
-        throw Exception('Problem on our side, Please try again');
-      }
-    } catch (e) {
-      throw Exception("Internal Server Error");
-    }
-  }
+//       final List<SuraName> chapters = List.generate(
+//         data.length,
+//         (index) => SuraName.fromMap(data[index]),
+//       );
+//       await cache.put(
+//         'chapters',
+//         chapters,
+//       );
 
-  static Future<List<Chapter?>?> chapterHive() async {
-    try {
-      final chapter = await cache.get('chapters');
+//       return chapters;
+//     } on DioError catch (e) {
+//       if (e.type == DioErrorType.other) {
+//         throw Exception('Problem with internet connection');
+//       } else {
+//         throw Exception('Problem on our side, Please try again');
+//       }
+//     } catch (e) {
+//       throw Exception("Internal Server Error");
+//     }
+//   }
 
-      if (chapter == null) return null;
+//   static Future<List<SuraName?>?> chapterHive() async {
+//     try {
+//       final chapter = await cache.get('chapters');
 
-      final List<Chapter?>? chapters = List.from(chapter);
+//       if (chapter == null) return null;
 
-      return chapters;
-    } catch (e) {
-      throw Exception("Internal Server Error");
-    }
-  }
-}
+//       final List<SuraName?>? chapters = List.from(chapter);
+
+//       return chapters;
+//     } catch (e) {
+//       throw Exception("Internal Server Error");
+//     }
+//   }
+// }

@@ -1,5 +1,5 @@
+import 'package:al_quran/utils/hiveutils.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/adapters.dart';
 
 final themeMap = {
   "dark": ThemeMode.dark,
@@ -7,14 +7,15 @@ final themeMap = {
 };
 
 class AppProvider extends ChangeNotifier {
-  final _cache = Hive.box('app');
-
   int _first = 0;
+
+  // var _cache;
 
   int get checkVisit => _first;
 
-  bool init() {
-    int? visit = _cache.get('visit');
+  Future<bool> init() async {
+    var _cache = await opedHive('app');
+    int? visit = _cache!.get('visit');
     if (visit == null || visit == 0) {
       _cache.put('visit', 1);
       return true;
@@ -32,14 +33,15 @@ class AppProvider extends ChangeNotifier {
   ThemeMode get themeMode => _themeMode!;
   bool get isDark => _themeMode == ThemeMode.dark;
 
-  void initTheme() {
-    String? stringTheme = _cache.get('theme');
+  Future<void> initTheme() async {
+    var _cache = await opedHive('app');
+    String? stringTheme = _cache?.get('theme');
 
     ThemeMode? theme =
         stringTheme == null ? ThemeMode.light : themeMap[stringTheme];
 
     if (theme == null) {
-      _cache.put(
+      _cache!.put(
         'theme',
         ThemeMode.light.toString().split(".").last,
       );
@@ -50,13 +52,14 @@ class AppProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setTheme(ThemeMode newTheme) {
+  Future<void> setTheme(ThemeMode newTheme) async {
+    var _cache = await opedHive('app');
     if (_themeMode == newTheme) {
       return;
     }
     _themeMode = newTheme;
 
-    _cache.put(
+    _cache?.put(
       'theme',
       newTheme.toString().split('.').last,
     );

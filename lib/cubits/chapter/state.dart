@@ -2,7 +2,7 @@ part of 'cubit.dart';
 
 @immutable
 class ChapterState extends Equatable {
-  final List<Chapter?>? data;
+  final List<Ayah?>? data;
   final String? message;
 
   const ChapterState({
@@ -18,19 +18,36 @@ class ChapterState extends Equatable {
 }
 
 @immutable
-class ChapterDefault extends ChapterState {}
+class ChapterDefault extends ChapterState {
+  const ChapterDefault({required super.data});
+}
 
 @immutable
 class ChapterFetchLoading extends ChapterState {
-  const ChapterFetchLoading() : super();
+  ChapterFetchLoading() : super(data: []);
+}
+
+@immutable
+class AyaLoading extends ChapterState {
+  AyaLoading() : super(data: []);
 }
 
 @immutable
 class ChapterFetchSuccess extends ChapterState {
-  const ChapterFetchSuccess({List<Chapter?>? data}) : super(data: data);
+  const ChapterFetchSuccess({List<Ayah?>? data}) : super(data: data);
+}
+
+@immutable
+class AyaFetchSuccess extends ChapterState {
+  const AyaFetchSuccess({List<Ayah?>? data}) : super(data: data);
 }
 
 @immutable
 class ChapterFetchFailed extends ChapterState {
-  const ChapterFetchFailed({String? message}) : super(message: message);
+  ChapterFetchFailed({String? message}) : super(message: message, data: []);
+}
+
+@immutable
+class AyaFetchFailed extends ChapterState {
+  AyaFetchFailed({String? message}) : super(message: message, data: []);
 }

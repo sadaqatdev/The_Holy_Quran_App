@@ -34,7 +34,7 @@ class _AppVersionState extends State<AppVersion> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Text(
-            "The Holy Qur'an",
+            "Shina Qur'an",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: MediaQuery.of(context).size.height * 0.018),

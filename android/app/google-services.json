@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "114260721598",
+    "project_id": "gb-quran",
+    "storage_bucket": "gb-quran.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114260721598:android:0331b6fee7622bff2f03ef",
+        "android_client_info": {
+          "package_name": "com.quran.gbquran"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114260721598-kgvo751rndpnvu2ed9uu863smiku23ej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATKSwSDfNgoSUGM0YKTecmIYDTHd_HM9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114260721598-kgvo751rndpnvu2ed9uu863smiku23ej.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "114260721598-0lmm2t2ql1mrj6tkav9r02rostcpua3p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.alQuran"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

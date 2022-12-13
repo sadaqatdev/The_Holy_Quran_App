@@ -1,5 +1,5 @@
 ### Privacy Policy
-The Holy Qur'an App
+Shina Quran App
 
 As per this application there is no such personal information that is being collected on user's behalf. The app is just connected to internet and other information which is collected could be from Google Analytics.
 

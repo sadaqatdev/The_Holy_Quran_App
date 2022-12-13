@@ -43,7 +43,7 @@ class DrawerAppName extends StatelessWidget {
               ),
             ),
             Text(
-              "Holy\nQur'an",
+              "Shina Holy\nQur'an",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: appProvider.isDark ? Colors.grey[200] : Colors.black54,

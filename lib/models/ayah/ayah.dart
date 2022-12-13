@@ -1,65 +1,68 @@
 import 'dart:convert';
 
-import 'package:hive/hive.dart';
+// CREATE TABLE "quran" (
+// 	"_id"	INTEGER NOT NULL,
+// 	"surah_id"	INTEGER,
+// 	"verse_id"	INTEGER,
+// 	"arabic"	TEXT,
+// 	"shina"	TEXT,
+// 	"balti"	TEXT,
+// 	"brushaski"	TEXT,
+// 	"juz_name"	TEXT,
+// 	PRIMARY KEY("_id")
+// )
 
-part 'ayah.g.dart';
-
-@HiveType(typeId: 0)
 class Ayah {
-  @HiveField(0)
-  final num? number;
-  @HiveField(1)
-  final String? text;
+  //
+
+  num? id;
+
+  num? surah_id;
+
+  num? verse_id;
+
+  String? arabic;
+
+  String? shina;
+
+  String? juz_name;
+
   Ayah({
-    this.number,
-    this.text,
+    this.id,
+    this.surah_id,
+    this.verse_id,
+    this.arabic,
+    this.shina,
+    this.juz_name,
   });
 
-  Ayah copyWith({
-    num? number,
-    String? text,
-  }) {
-    return Ayah(
-      number: number ?? number,
-      text: text ?? text,
-    );
-  }
-
-  Ayah merge(Ayah model) {
-    return Ayah(
-      number: model.number ?? number,
-      text: model.text ?? text,
-    );
-  }
-
   Map<String, dynamic> toMap() {
-    return {
-      'number': number,
-      'text': text,
-    };
+    final result = <String, dynamic>{};
+
+    if (id != null) {
+      result.addAll({'id': id});
+    }
+    result.addAll({'surah_id': surah_id});
+    result.addAll({'verse_id': verse_id});
+    result.addAll({'arabic': arabic});
+    result.addAll({'shina': shina});
+    result.addAll({'juz_name': juz_name});
+
+    return result;
   }
 
   factory Ayah.fromMap(Map<String, dynamic> map) {
     return Ayah(
-      number: map['number'],
-      text: map['text'],
+      id: map['id'],
+      surah_id: map['surah_id'] ?? 0,
+      verse_id: map['verse_id'] ?? 0,
+      arabic: map['arabic'] ?? '',
+      shina: map['shina'] ?? '',
+      juz_name: map['juz_name'] ?? '',
     );
   }
 
   String toJson() => json.encode(toMap());
 
   factory Ayah.fromJson(String source) => Ayah.fromMap(json.decode(source));
-
-  @override
-  String toString() => 'Ayah(number: $number, text: $text)';
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is Ayah && other.number == number && other.text == text;
-  }
-
-  @override
-  int get hashCode => number.hashCode ^ text.hashCode;
 }

@@ -1,4 +1,4 @@
-# The Holy Qur'an 2.5.0
+# Shina Quran 2.5.0
 
 Application of Holy book of Muslims, Al-Qur'an. Developed using Flutter
 The data is fetched using API and now the **offline mode** is available. So, you need internet for the first time only!
@@ -16,7 +16,7 @@ The data is fetched using API and now the **offline mode** is available. So, you
 
 ## 📁 Download Now
 
-Get it from <a href="https://play.google.com/store/apps/details?id=com.hmz.al_quran">Play Store</a>
+Get it from <a href="https://play.google.com/store/apps/details?id=com.quran.gbquran">Play Store</a>
 
 ## 🎥 Promo Video
 

@@ -40,8 +40,8 @@ class ShareInfo extends StatelessWidget {
     final RenderBox box = context.findRenderObject() as RenderBox;
 
     Share.share(
-        "Download the latest no-Ads Holy Qur'an App on Play store\n\n"
-        "https://play.google.com/store/apps/details?id=com.hmz.al_quran \n\nShare More! It is Sadaq-e-Jaria :)",
+        "Download the latest Shina Holy Qur'an App on Play store\n\n"
+        "https://play.google.com/store/apps/details?id=com.quran.gbquran \n\nShare More! It is Sadaq-e-Jaria :)",
         sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
   }
 
@@ -58,7 +58,7 @@ class ShareInfo extends StatelessWidget {
           Image.asset(StaticAssets.gradLogo, height: height * 0.2),
           SizedBox(height: height * 0.02),
           Text(
-              "The Holy Qur'an App is also available as Open Source on GitHub!",
+              "The Shina Holy Qur'an App is also available as Open Source on GitHub!",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.caption),
           SizedBox(height: height * 0.05),
@@ -68,16 +68,18 @@ class ShareInfo extends StatelessWidget {
             onPressed: () => share(context),
           ),
           _ShareCustomButton(
-            iconData: ShareIcon.github,
-            text: 'GitHub Repo',
-            onPressed: () =>
-                launch("https://github.com/mhmzdev/The_Holy_Quran_App"),
-          ),
+              iconData: ShareIcon.github,
+              text: 'GitHub Repo',
+              onPressed: () {
+                //
+              }
+              // launch("https://github.com/mhmzdev/The_Holy_Quran_App"),
+              ),
           _ShareCustomButton(
             iconData: ShareIcon.googlePlay,
             text: 'Rate & Feedback',
             onPressed: () => launch(
-                "https://play.google.com/store/apps/details?id=com.hmz.al_quran"),
+                "https://play.google.com/store/apps/details?id=com.quran.gbquran"),
           ),
           SizedBox(height: height * 0.02),
           const AppVersion()

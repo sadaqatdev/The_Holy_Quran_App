@@ -2,7 +2,7 @@ part of 'cubit.dart';
 
 @immutable
 class JuzState extends Equatable {
-  final Juz? data;
+  final List<Juz>? data;
   final String? message;
 
   const JuzState({
@@ -27,7 +27,7 @@ class JuzFetchLoading extends JuzState {
 
 @immutable
 class JuzFetchSuccess extends JuzState {
-  const JuzFetchSuccess({Juz? data}) : super(data: data);
+  const JuzFetchSuccess({List<Juz>? data}) : super(data: data);
 }
 
 @immutable

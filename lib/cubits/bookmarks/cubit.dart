@@ -1,4 +1,4 @@
-import 'package:al_quran/models/chapter/chapter.dart';
+import 'package:al_quran/models/chapter/sura_name.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +16,7 @@ class BookmarkCubit extends Cubit<BookmarkState> {
   Future<void> fetch() async {
     emit(const BookmarkFetchLoading());
     try {
-      List<Chapter?>? data = await BookmarksDataProvider.fetch();
+      List<SuraName?>? data = await BookmarksDataProvider.fetch();
 
       emit(BookmarkFetchSuccess(data: data, isBookmarked: false));
     } catch (e) {
@@ -24,10 +24,10 @@ class BookmarkCubit extends Cubit<BookmarkState> {
     }
   }
 
-  Future<void> updateBookmark(Chapter chapter, bool add) async {
+  Future<void> updateBookmark(SuraName chapter, bool add) async {
     emit(const BookmarkFetchLoading());
     try {
-      List<Chapter?>? data = [];
+      List<SuraName?>? data = [];
       if (add) {
         data = await BookmarksDataProvider.addBookmark(chapter);
       } else {
@@ -41,7 +41,7 @@ class BookmarkCubit extends Cubit<BookmarkState> {
     }
   }
 
-  Future<void> checkBookmarked(Chapter chapter) async {
+  Future<void> checkBookmarked(SuraName chapter) async {
     emit(const BookmarkFetchLoading());
     try {
       final isBookmarked = await BookmarksDataProvider.checkBookmarked(chapter);
