@@ -3,9 +3,7 @@ import 'package:al_quran/configs/app.dart';
 import 'package:al_quran/configs/configs.dart';
 import 'package:al_quran/cubits/juz/cubit.dart';
 import 'package:al_quran/providers/app_provider.dart';
-import 'package:al_quran/screens/surah/surah_index_screen.dart';
 import 'package:al_quran/utils/assets.dart';
-import 'package:al_quran/utils/juz.dart';
 import 'package:al_quran/widgets/custom_back_button.dart';
 import 'package:al_quran/widgets/custom_image.dart';
 import 'package:al_quran/widgets/flare.dart';
@@ -24,6 +22,14 @@ class JuzIndexScreen extends StatefulWidget {
 class _JuzIndexScreenState extends State<JuzIndexScreen> {
   int _searchedIndex = -1;
   String _searchedJuzName = '';
+
+  @override
+  void initState() {
+    final chapterCubit = JuzCubit.cubit(context);
+
+    chapterCubit.fetchJuz();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

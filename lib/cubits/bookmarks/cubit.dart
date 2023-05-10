@@ -2,7 +2,7 @@ import 'package:al_quran/models/chapter/sura_name.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive_flutter/adapters.dart';
+// import 'package:hive_flutter/adapters.dart';
 
 part 'state.dart';
 part 'data_provider.dart';
@@ -16,8 +16,8 @@ class BookmarkCubit extends Cubit<BookmarkState> {
   Future<void> fetch() async {
     emit(const BookmarkFetchLoading());
     try {
-      List<SuraName?>? data = await BookmarksDataProvider.fetch();
-
+      List<SuraName?>? data = [];
+//await BookmarksDataProvider.fetch();
       emit(BookmarkFetchSuccess(data: data, isBookmarked: false));
     } catch (e) {
       emit(BookmarkFetchFailed(message: e.toString()));

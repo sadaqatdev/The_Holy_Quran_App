@@ -4,8 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+// import 'package:hive/hive.dart';
+// import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,7 +42,7 @@ Future<void> main() async {
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   // hive
-  await Hive.initFlutter();
+  // await Hive.initFlutter();
 
   // Hive.registerAdapter<Juz>(JuzAdapter());
   // Hive.registerAdapter<Ayah>(AyahAdapter());

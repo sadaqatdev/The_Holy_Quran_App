@@ -1,5 +1,5 @@
-import 'package:al_quran/utils/hiveutils.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final themeMap = {
   "dark": ThemeMode.dark,
@@ -11,13 +11,15 @@ class AppProvider extends ChangeNotifier {
 
   // var _cache;
 
+  SharedPreferences? preferences;
   int get checkVisit => _first;
 
   Future<bool> init() async {
-    var _cache = await opedHive('app');
-    int? visit = _cache!.get('visit');
+    preferences = await SharedPreferences.getInstance();
+    var visit = preferences?.getInt("visit");
+
     if (visit == null || visit == 0) {
-      _cache.put('visit', 1);
+      preferences?.setInt('visit', 1);
       return true;
     }
     return false;
@@ -34,14 +36,15 @@ class AppProvider extends ChangeNotifier {
   bool get isDark => _themeMode == ThemeMode.dark;
 
   Future<void> initTheme() async {
-    var _cache = await opedHive('app');
-    String? stringTheme = _cache?.get('theme');
+    // var _cache = await opedHive('app');
+    preferences = await SharedPreferences.getInstance();
+    String? stringTheme = preferences?.getString('theme');
 
     ThemeMode? theme =
         stringTheme == null ? ThemeMode.light : themeMap[stringTheme];
 
     if (theme == null) {
-      _cache!.put(
+      preferences!.setString(
         'theme',
         ThemeMode.light.toString().split(".").last,
       );
@@ -53,13 +56,14 @@ class AppProvider extends ChangeNotifier {
   }
 
   Future<void> setTheme(ThemeMode newTheme) async {
-    var _cache = await opedHive('app');
+    // var _cache = await opedHive('app');
+    preferences = await SharedPreferences.getInstance();
     if (_themeMode == newTheme) {
       return;
     }
     _themeMode = newTheme;
 
-    _cache?.put(
+    preferences?.setString(
       'theme',
       newTheme.toString().split('.').last,
     );

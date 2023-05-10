@@ -42,9 +42,9 @@ class About extends StatelessWidget {
                   ),
                   GuideContainer(
                     guideNo: 3,
-                    title: "Developer Info",
+                    title: "Data Base Developer",
                     guideDescription:
-                        "Yasir Hussain \n Email: it.engineer.yasir@gmail.com \n Email: it.engineer.yasir@gmail.com \n GitHub: github.com/sadaqatdev \nWhatsApp 03109366308",
+                        "Yasir Hussain \n Email: it.engineer.yasir@gmail.com  \n",
                   ),
                   // Center(
                   //     child: Text(
